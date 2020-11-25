@@ -1,0 +1,18 @@
+outlier <- function(data){
+  
+  q1 <- percentile(data, 0.25)
+  q3 <- percentile(data, 0.75)
+  
+  iqr <- q3 - q1
+  
+  L <- q1 - 1.5 * iqr
+  U <- q3 + 1.5 * iqr
+  
+  out <- data[data < L | data > U]
+  
+  if(length(out) == 0){
+    print("There is no outlier")
+  }else{
+    return(out)
+  }  
+}
