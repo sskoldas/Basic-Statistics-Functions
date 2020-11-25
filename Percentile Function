@@ -1,0 +1,29 @@
+#Percentile Function in R
+percentile <- function(d , p){
+  sorted_data <- sort(d)
+  n <- length(d)
+  np <- n * p
+  
+  if((np %% 1)==0){
+    out <- (sorted_data[np] + sorted_data[np + 1])/2
+  } else{
+    out <- sorted_data[ceiling(np)]
+  }
+  return(out)
+}
+
+#Alternative Percentile Function in R
+
+percentile2 <- function(d , p){
+  sorted_data <- sort(d)
+  n <- length(d)
+  np <- n * p
+  out <- c()
+  for (i in 1: length(p))
+    if ((np[i]%%1)==0){
+      out <- c(out, (sorted_data[np[i]]+ sorted_data[np[i]+1])/2)
+    }else {
+      out <- c(out, sorted_data[ceiling(np[i])])
+    }
+  return(out)
+}
