@@ -1,0 +1,13 @@
+modefunction <- function(data){
+
+  tbl <- table(data)
+  nms <- as.numeric(names(tbl))
+  occ <- as.numeric(tbl)
+  ind <- which(occ == max(occ))
+  modes <- nms[ind]
+  if (length(modes) == length(data)) {
+    print("no mode")
+  } else {
+    return(modes)
+  }
+}
